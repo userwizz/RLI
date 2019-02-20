@@ -36,7 +36,6 @@
 					</archive>
 				</configuration>
 				<executions>
-
 					<!-- automatically build the standalone jar during the package phase -->
 					<execution>
 						<id>make-jar-with-dependencies</id>
@@ -47,6 +46,15 @@
 					</execution>
 				</executions>
 			</plugin>
+ 			<!-- start server -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <mainClass>${testLibraryClass}</mainClass>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
   
