@@ -1,5 +1,7 @@
 *** Settings ***
 Library    Remote     http://127.0.0.1:8270/mylib      WITH NAME   FancyLib
+Suite Teardown    Stop Remote Server
+
 
 *** Test Cases ***
 Test Remote Libs
