@@ -8,7 +8,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <testLibraryClass>com.jrobotlibs.jrobottryout.ServerLauncher</testLibraryClass>
+    <testLibraryClass>com.jrobotlib.ServerLauncher</testLibraryClass>
   </properties>
 
   <dependencies>
@@ -46,7 +46,7 @@
 					</execution>
 				</executions>
 			</plugin>
- 			<!-- start server -->
+ 			<!-- to start server -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -55,6 +55,18 @@
                     <mainClass>${testLibraryClass}</mainClass>
                 </configuration>
             </plugin>
+           	<!-- for keyword documentation -->
+           	<plugin>
+		        <groupId>org.robotframework</groupId>
+		        <artifactId>robotframework-maven-plugin</artifactId>
+		        <version>1.5.1</version>
+		        <configuration>
+			        <libdoc>
+						<outputFile>FancyLibrary.html</outputFile>
+						<libraryOrResourceFile>com.jrobotlib.keywords.FancyLibrary</libraryOrResourceFile>
+	        		</libdoc>
+        		</configuration>
+    	  </plugin>
 		</plugins>
 	</build>
   

@@ -1,9 +1,10 @@
 *** Settings ***
-Library    Remote     http://localhost:8270/
+Library    Remote     http://127.0.0.1:8270/mylib      WITH NAME   FancyLib
 
 *** Test Cases ***
-Test Remote Lib
-    ${my_int}    Square Integer    3
-    Should Be Equal As Integers    ${my_int}    9
+Test Remote Libs
+    Generate Western Name    Timo    Soini
+    ${value}    Make It Double    16
+    Should Be Equal As Integers    ${value}    32
 
 
