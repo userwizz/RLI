@@ -1,14 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.jrobotlibs</groupId>
-  <artifactId>jrobottryout</artifactId>
+  <groupId>com.jrobotlib</groupId>
+  <artifactId>fancylib</artifactId>
   <version>0.1</version>
   <packaging>jar</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <testLibraryClass>com.jrobotlib.ServerLauncher</testLibraryClass>
+    <mainClass>com.jrobotlib.ServerLauncher</mainClass>
   </properties>
 
   <dependencies>
@@ -16,6 +16,12 @@
 	    <groupId>com.github.ombre42</groupId>
 	    <artifactId>jrobotremoteserver</artifactId>
 	    <version>3.0</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-api</artifactId>
+	    <version>5.4.0</version>
+	    <scope>test</scope>
 	</dependency>
   </dependencies>
   
@@ -31,7 +37,7 @@
 					<archive>
 						<manifest>
 							<!-- make the jar runnable -->
-							<mainClass>${testLibraryClass}</mainClass>
+							<mainClass>${mainClass}</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
@@ -52,19 +58,26 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.6.0</version>
                 <configuration>
-                    <mainClass>${testLibraryClass}</mainClass>
+                    <mainClass>${mainClass}</mainClass>
                 </configuration>
             </plugin>
+            <!-- for unit tests -->
+            <plugin>
+            	<artifactId>maven-surefire-plugin</artifactId>
+            	<version>2.22.0</version>
+        	</plugin>
            	<!-- for keyword documentation -->
            	<plugin>
 		        <groupId>org.robotframework</groupId>
 		        <artifactId>robotframework-maven-plugin</artifactId>
 		        <version>1.5.1</version>
 		        <configuration>
-			        <libdoc>
-						<outputFile>FancyLibrary.html</outputFile>
-						<libraryOrResourceFile>com.jrobotlib.keywords.FancyLibrary</libraryOrResourceFile>
-	        		</libdoc>
+		        <libdoc>
+					<outputFile>FancyLibrary.html</outputFile>
+					<name>FancyLibrary</name>
+					<version>0.1</version>
+					<libraryOrResourceFile>com.jrobotlib.keywords.FancyLibrary</libraryOrResourceFile>
+        		</libdoc>
         		</configuration>
     	  </plugin>
 		</plugins>

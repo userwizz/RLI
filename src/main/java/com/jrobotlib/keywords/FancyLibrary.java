@@ -33,22 +33,21 @@ public class FancyLibrary extends AnnotationLibrary {
 	
 	// Annotating methods with @RobotKeyword will make them registered as keywords. 
 	// @ArgumentNames annotation will provide argument names for documentation 
-	@RobotKeyword("Doubles given 'value'")
-	@ArgumentNames({"value"})
-	public int MakeItDouble(int value) { 
-		
-		return value * 2;
-	}
-	
-	
 	@RobotKeyword("Generate random western name")
 	@ArgumentNames({"firstname", "lastname"})
 	public String generateWesternName(String firstname, String lastname) {
-		
 		List<String> names = Arrays.asList("Cactus","Deadeye","Pale Face", "Arkansas" , "Texas", "The Kid");
 		int index = ThreadLocalRandom.current().nextInt(names.size());		
-		String newName = firstname + " '" + names.get(index) + "' " + lastname;
-		System.out.println(newName);
-		return newName;
+		String westernName = firstname + " '" + names.get(index) + "' " + lastname;
+		System.out.println(westernName);
+		return westernName;
 	}
+	
+	
+	@RobotKeyword("Doubles given 'value'")
+	@ArgumentNames({"value"})
+	public int makeItDouble(int value) { 
+		return value * 2;
+	}
+	
 }

@@ -4,7 +4,7 @@ Suite Teardown    Stop Remote Server
 
 
 *** Test Cases ***
-Test Remote Libs
+Test Remote Lib
     Generate Western Name    Timo    Soini
     ${value}    Make It Double    16
     Should Be Equal As Integers    ${value}    32
